@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp3v1v2mwhjlm"]
+
+[ext_resource type="Script" path="res://players/base_player.gd" id="1_mpeof"]
+[ext_resource type="Texture2D" uid="uid://cv68bahulywok" path="res://icon.svg" id="2_ftsky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isqbp"]
+size = Vector2(127, 129)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_js8fk"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Playername:text")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+
+[node name="BasePlayer" type="CharacterBody2D"]
+script = ExtResource("1_mpeof")
+
+[node name="Playername" type="Label" parent="."]
+offset_left = -64.0
+offset_top = -90.0
+offset_right = 64.0
+offset_bottom = -67.0
+text = "Unnamed"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_isqbp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(0.5, 0.5)
+texture = ExtResource("2_ftsky")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_js8fk")

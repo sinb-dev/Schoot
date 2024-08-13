@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqilwuwi4erpd"]
+
+[ext_resource type="Script" path="res://menus/mainmenu.gd" id="1_l78jt"]
+
+[node name="Mainmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l78jt")
+
+[node name="JoinButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 152.0
+offset_right = 397.0
+offset_bottom = 183.0
+text = "Join"
+
+[node name="HostButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 96.0
+offset_right = 233.0
+offset_bottom = 127.0
+text = "Host"
+
+[node name="TxtUsername" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 154.0
+offset_right = 353.0
+offset_bottom = 183.0
+
+[connection signal="pressed" from="JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="HostButton" to="." method="_on_host_button_pressed"]
